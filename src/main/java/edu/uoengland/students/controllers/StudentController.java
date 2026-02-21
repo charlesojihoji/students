@@ -2,14 +2,14 @@ package edu.uoengland.students.controllers;
 
 //Test
 
-import edu.uoengland.students.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import edu.uoengland.students.dto.CourseDTO;
 import edu.uoengland.students.dto.StudentDTO;
+import edu.uoengland.students.feignclient.CourseStudentServiceClient;
 import edu.uoengland.students.service.StudentService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +21,9 @@ public class StudentController {
 	
 	@Autowired
 	private StudentService studentService;
+	
+	@Autowired
+	private CourseStudentServiceClient courseStudentServiceClient;
 	
 	@PostMapping
 	public StudentDTO saveStudent(@RequestBody StudentDTO studentDTO) {
@@ -44,6 +47,12 @@ public class StudentController {
 		return studentService.getAStudent(id);
 	}
 
+	@GetMapping("/{studentId}")
+	public List<CourseDTO> getAListOfCoursesForAStudent(@PathVariable UUID studentId){
+		
+		return courseStudentServiceClient.getAListOfCoursesForAStudent(studentId).getBody();
+	}
+	
 	@PutMapping("/update/{id}")
 	public String updateStudent(@RequestBody StudentDTO studentDTO, @PathVariable UUID id){
 

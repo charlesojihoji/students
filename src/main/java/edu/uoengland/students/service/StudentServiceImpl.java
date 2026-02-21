@@ -3,8 +3,10 @@ package edu.uoengland.students.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.uoengland.students.dto.CourseDTO;
 import edu.uoengland.students.dto.StudentDTO;
 import edu.uoengland.students.entity.Student;
+import edu.uoengland.students.feignclient.CourseStudentServiceClient;
 import edu.uoengland.students.repository.StudentRepository;
 
 import java.util.ArrayList;
@@ -102,6 +104,14 @@ public class StudentServiceImpl implements StudentService {
 		studentRepository.deleteById(id);
 
 		return "The Student object with ID " + id + " has been successfully deleted";
+	}
+
+	@Override
+	public List<CourseDTO> getAListOfCoursesForAStudent(UUID studentId) {
+		
+		//return courseStudentServiceClient.getAListOfCoursesForAStudent(studentId).getBody();
+		
+		return null;
 	}
 
 }

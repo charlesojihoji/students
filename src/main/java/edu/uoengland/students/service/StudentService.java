@@ -1,5 +1,6 @@
 package edu.uoengland.students.service;
 
+import edu.uoengland.students.dto.CourseDTO;
 import edu.uoengland.students.dto.StudentDTO;
 import edu.uoengland.students.entity.Student;
 
@@ -17,4 +18,6 @@ public interface StudentService {
 	String updateStudent(StudentDTO studentDTO, UUID id);
 
 	String deleteStudent(UUID id);
+
+	List<CourseDTO> getAListOfCoursesForAStudent(UUID studentId);
 }

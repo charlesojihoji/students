@@ -22,8 +22,8 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 	
-	@Autowired
-	private CourseStudentServiceClient courseStudentServiceClient;
+	//@Autowired
+	//private CourseStudentServiceClient courseStudentServiceClient;
 	
 	@PostMapping
 	public StudentDTO saveStudent(@RequestBody StudentDTO studentDTO) {
@@ -50,7 +50,8 @@ public class StudentController {
 	@GetMapping("/{studentId}")
 	public List<CourseDTO> getAListOfCoursesForAStudent(@PathVariable UUID studentId){
 		
-		return courseStudentServiceClient.getAListOfCoursesForAStudent(studentId).getBody();
+		//return courseStudentServiceClient.getAListOfCoursesForAStudent(studentId).getBody();
+		return null;
 	}
 	
 	@PutMapping("/update/{id}")
